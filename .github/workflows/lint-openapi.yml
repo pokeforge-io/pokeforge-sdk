@@ -1,0 +1,23 @@
+name: Lint OpenAPI
+
+on:
+  pull_request:
+    paths:
+      - 'openapi/openapi.json'
+  push:
+    branches: [main]
+    paths:
+      - 'openapi/openapi.json'
+
+jobs:
+  validate:
+    runs-on: arc-runners
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate OpenAPI spec
+        run: npx @openapitools/openapi-generator-cli validate -i openapi/openapi.json
