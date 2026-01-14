@@ -1,0 +1,11 @@
+name: Merge Queue
+
+on:
+  merge_group:
+
+jobs:
+  ready:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ready to merge
+        run: echo "Merge queue check passed"
