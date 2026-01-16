@@ -9,7 +9,7 @@
     "/health": {
       "get": {
         "tags": [
-          "Api, Version=0.1.123.0, Culture=neutral, PublicKeyToken=null"
+          "Api, Version=0.1.124.0, Culture=neutral, PublicKeyToken=null"
         ],
         "operationId": "HTTP:GET/health",
         "responses": {
@@ -9158,7 +9158,7 @@
       "name": "AdminVariantTypes"
     },
     {
-      "name": "Api, Version=0.1.123.0, Culture=neutral, PublicKeyToken=null"
+      "name": "Api, Version=0.1.124.0, Culture=neutral, PublicKeyToken=null"
     },
     {
       "name": "Artists"
