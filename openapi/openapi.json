@@ -9,7 +9,7 @@
     "/health": {
       "get": {
         "tags": [
-          "Api, Version=0.1.133.0, Culture=neutral, PublicKeyToken=null"
+          "Api, Version=0.1.135.0, Culture=neutral, PublicKeyToken=null"
         ],
         "operationId": "HTTP:GET/health",
         "responses": {
@@ -6330,6 +6330,20 @@
         "additionalProperties": false,
         "description": "Generic request wrapper for batch imports."
       },
+      "BatchSetCardCountRequest": {
+        "type": "object",
+        "properties": {
+          "updates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SetCardCountUpdate"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Request to batch update set card counts."
+      },
       "BatchSetItemRequest": {
         "type": "object",
         "properties": {
@@ -8746,6 +8760,73 @@
         ],
         "type": "string"
       },
+      "SetCardCountInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "slug": {
+            "type": "string",
+            "nullable": true
+          },
+          "storedCardCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "actualCardCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Information about a set's card count."
+      },
+      "SetCardCountUpdate": {
+        "type": "object",
+        "properties": {
+          "setId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "cardCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "A single set card count update."
+      },
+      "SetCardCountsResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "sets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SetCardCountInfo"
+            },
+            "nullable": true
+          },
+          "totalSets": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "mismatchedCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Response wrapper for set card counts."
+      },
       "SetCollectionCountsResponse": {
         "type": "object",
         "properties": {
@@ -9232,7 +9313,7 @@
       "name": "AdminVariantTypes"
     },
     {
-      "name": "Api, Version=0.1.133.0, Culture=neutral, PublicKeyToken=null"
+      "name": "Api, Version=0.1.135.0, Culture=neutral, PublicKeyToken=null"
     },
     {
       "name": "Artists"
@@ -9263,6 +9344,9 @@
     },
     {
       "name": "InternalPosts"
+    },
+    {
+      "name": "InternalSets"
     },
     {
       "name": "Posts"
