@@ -1,0 +1,29 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      releases_created: ${{ steps.release.outputs.releases_created }}
+      typescript_release_created: ${{ steps.release.outputs['packages/typescript--release_created'] }}
+      typescript_tag_name: ${{ steps.release.outputs['packages/typescript--tag_name'] }}
+      python_release_created: ${{ steps.release.outputs['packages/python--release_created'] }}
+      python_tag_name: ${{ steps.release.outputs['packages/python--tag_name'] }}
+      csharp_release_created: ${{ steps.release.outputs['packages/csharp--release_created'] }}
+      csharp_tag_name: ${{ steps.release.outputs['packages/csharp--tag_name'] }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
