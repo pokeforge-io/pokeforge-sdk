@@ -1,0 +1,27 @@
+{
+  "name": "pokeforge-sdk-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Official PokeForge SDKs for TypeScript, Python, and C#",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "lint": "pnpm -r run lint",
+    "generate": "./scripts/generate-all.sh",
+    "validate-spec": "./scripts/validate-spec.sh"
+  },
+  "keywords": [
+    "pokeforge",
+    "sdk",
+    "api",
+    "pokemon",
+    "tcg"
+  ],
+  "author": "PokeForge",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "packageManager": "pnpm@9.15.4"
+}
