@@ -43,6 +43,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "generate": "openapi-typescript ../../openapi/openapi.json -o src/generated/api.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
@@ -55,6 +56,7 @@
     "node": ">=18"
   },
   "devDependencies": {
+    "openapi-typescript": "^7.4.4",
     "tsup": "^8.3.5",
     "typescript": "^5.7.3",
     "vitest": "^2.1.8"
