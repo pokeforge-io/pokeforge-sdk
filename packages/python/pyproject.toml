@@ -1,0 +1,71 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pokeforge-sdk"
+version = "0.1.0"
+description = "Official PokeForge API SDK for Python"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "PokeForge", email = "dev@pokeforge.gg" }
+]
+keywords = ["pokeforge", "pokemon", "tcg", "trading-cards", "api", "sdk"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Typing :: Typed",
+]
+dependencies = [
+    "httpx>=0.25.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "respx>=0.20.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/pokeforge/pokeforge-sdk"
+Documentation = "https://github.com/pokeforge/pokeforge-sdk/tree/main/packages/python#readme"
+Repository = "https://github.com/pokeforge/pokeforge-sdk.git"
+Issues = "https://github.com/pokeforge/pokeforge-sdk/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pokeforge_sdk"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP"]
+ignore = [
+    "UP007",  # Use X | Y instead of Union - requires Python 3.10+
+    "UP035",  # Import from collections.abc - requires Python 3.9+
+    "UP045",  # Use X | None instead of Optional - requires Python 3.10+
+]
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+warn_return_any = true
+warn_unused_ignores = true
