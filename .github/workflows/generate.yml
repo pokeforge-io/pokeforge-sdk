@@ -1,0 +1,93 @@
+name: Generate SDKs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'openapi/openapi.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # TypeScript SDK
+      - name: Generate TypeScript types
+        run: pnpm --filter @pokeforge/sdk generate
+
+      - name: Build TypeScript SDK
+        run: pnpm --filter @pokeforge/sdk build
+
+      - name: Typecheck TypeScript SDK
+        run: pnpm --filter @pokeforge/sdk typecheck
+
+      - name: Test TypeScript SDK
+        run: pnpm --filter @pokeforge/sdk test
+
+      # TODO: Python SDK (enable when #7 is implemented)
+      # - name: Setup Python
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3.12'
+      #
+      # - name: Generate Python SDK
+      #   run: |
+      #     pip install openapi-python-client
+      #     # Add generation command here
+
+      # TODO: C# SDK (enable when #8 is implemented)
+      # - name: Setup .NET
+      #   uses: actions/setup-dotnet@v4
+      #   with:
+      #     dotnet-version: '9.0.x'
+      #
+      # - name: Generate C# SDK
+      #   run: |
+      #     dotnet tool install -g NSwag.ConsoleCore
+      #     # Add generation command here
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.changes.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: regenerate SDKs from OpenAPI spec'
+          title: 'chore: regenerate SDKs from OpenAPI spec'
+          body: |
+            This PR was automatically generated after changes to the OpenAPI spec.
+
+            ## Changes
+            - Regenerated TypeScript SDK types from `openapi/openapi.json`
+
+            ## Verification
+            - [x] TypeScript SDK builds successfully
+            - [x] TypeScript SDK passes type checking
+            - [x] TypeScript SDK tests pass
+          branch: chore/regenerate-sdks
+          delete-branch: true
