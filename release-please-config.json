@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "separate-pull-requests": true,
+  "tag-separator": "-",
+  "include-v-in-tag": true,
+  "include-component-in-tag": true,
+  "packages": {
+    "packages/typescript": {
+      "release-type": "node",
+      "package-name": "@pokeforge/sdk",
+      "component": "typescript",
+      "changelog-path": "CHANGELOG.md"
+    },
+    "packages/python": {
+      "release-type": "python",
+      "package-name": "pokeforge-sdk",
+      "component": "python",
+      "changelog-path": "CHANGELOG.md"
+    },
+    "packages/csharp": {
+      "release-type": "simple",
+      "package-name": "PokeForge.SDK",
+      "component": "csharp",
+      "changelog-path": "CHANGELOG.md"
+    }
+  }
+}
