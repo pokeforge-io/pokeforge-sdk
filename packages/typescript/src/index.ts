@@ -7,5 +7,7 @@
 /** SDK version */
 export const VERSION = "0.1.0";
 
-// Generated types will be exported from ./generated
+// Generated types from OpenAPI spec
+export type * from "./generated/api";
+
 // Client wrapper will be exported from ./client
