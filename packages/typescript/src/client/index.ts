@@ -1,24 +1,12 @@
-/**
- * PokeForge SDK for TypeScript/JavaScript
- *
- * @packageDocumentation
- */
+// Main client
+export { PokeForgeClient } from "./PokeForgeClient";
 
-/** SDK version */
-export const VERSION = "0.1.0";
-
-// Generated types from OpenAPI spec
-export type * from "./generated/api";
-
-// Client
-export { PokeForgeClient } from "./client";
-
-// Configuration types
+// HTTP utilities
 export type {
   PokeForgeClientConfig,
   AuthConfig,
   RetryDelayConfig,
-} from "./client";
+} from "./http";
 
 // Errors
 export {
@@ -30,12 +18,12 @@ export {
   ValidationError,
   TimeoutError,
   NetworkError,
-} from "./client";
+} from "./errors";
 
-// Pagination types
-export type { Page, PageInfo, PaginationOptions } from "./client";
+// Pagination
+export type { Page, PageInfo, PaginationOptions } from "./pagination";
 
-// Resource option types
+// Resources and their option types
 export type {
   ListCardsOptions,
   SearchCardsOptions,
@@ -48,4 +36,4 @@ export type {
   AddCollectionItemOptions,
   UpdateCollectionItemOptions,
   AddFavoriteResult,
-} from "./client";
+} from "./resources";
