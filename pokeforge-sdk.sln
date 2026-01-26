@@ -1,0 +1,45 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "packages", "packages", "{809F86A1-1C4C-B159-0CD4-DF9D33D876CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "csharp", "csharp", "{7CF7D318-FDA0-905B-4440-E9F1BBE47CED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{28977A9C-0F37-0651-2A85-C293D8C3ED5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeForge.SDK.Tests", "packages\csharp\tests\PokeForge.SDK.Tests\PokeForge.SDK.Tests.csproj", "{09DDCC8B-5E8B-15FC-BA7F-9691E2CED93E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{54ABF108-C7A9-4D58-2ED4-3D70523A7D29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeForge.SDK", "packages\csharp\src\PokeForge.SDK\PokeForge.SDK.csproj", "{D791518A-1D4F-436B-72E2-87500FE0921E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09DDCC8B-5E8B-15FC-BA7F-9691E2CED93E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09DDCC8B-5E8B-15FC-BA7F-9691E2CED93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09DDCC8B-5E8B-15FC-BA7F-9691E2CED93E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09DDCC8B-5E8B-15FC-BA7F-9691E2CED93E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D791518A-1D4F-436B-72E2-87500FE0921E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D791518A-1D4F-436B-72E2-87500FE0921E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D791518A-1D4F-436B-72E2-87500FE0921E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D791518A-1D4F-436B-72E2-87500FE0921E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7CF7D318-FDA0-905B-4440-E9F1BBE47CED} = {809F86A1-1C4C-B159-0CD4-DF9D33D876CE}
+		{28977A9C-0F37-0651-2A85-C293D8C3ED5C} = {7CF7D318-FDA0-905B-4440-E9F1BBE47CED}
+		{09DDCC8B-5E8B-15FC-BA7F-9691E2CED93E} = {28977A9C-0F37-0651-2A85-C293D8C3ED5C}
+		{54ABF108-C7A9-4D58-2ED4-3D70523A7D29} = {7CF7D318-FDA0-905B-4440-E9F1BBE47CED}
+		{D791518A-1D4F-436B-72E2-87500FE0921E} = {54ABF108-C7A9-4D58-2ED4-3D70523A7D29}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25A9B2BE-91E3-48F1-A76C-0E3DBF7D6927}
+	EndGlobalSection
+EndGlobal
