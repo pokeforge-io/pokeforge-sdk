@@ -52,16 +52,21 @@ jobs:
       #     pip install openapi-python-client
       #     # Add generation command here
 
-      # TODO: C# SDK (enable when #8 is implemented)
-      # - name: Setup .NET
-      #   uses: actions/setup-dotnet@v4
-      #   with:
-      #     dotnet-version: '9.0.x'
-      #
-      # - name: Generate C# SDK
-      #   run: |
-      #     dotnet tool install -g NSwag.ConsoleCore
-      #     # Add generation command here
+      # C# SDK
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            9.0.x
+
+      - name: Build C# SDK
+        working-directory: packages/csharp
+        run: dotnet build src/PokeForge.SDK/PokeForge.SDK.csproj -c Release
+
+      - name: Test C# SDK
+        working-directory: packages/csharp
+        run: dotnet test tests/PokeForge.SDK.Tests/PokeForge.SDK.Tests.csproj --verbosity normal
 
       - name: Check for changes
         id: changes
@@ -89,5 +94,7 @@ jobs:
             - [x] TypeScript SDK builds successfully
             - [x] TypeScript SDK passes type checking
             - [x] TypeScript SDK tests pass
+            - [x] C# SDK builds successfully
+            - [x] C# SDK tests pass
           branch: chore/regenerate-sdks
           delete-branch: true
