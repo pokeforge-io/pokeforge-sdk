@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RootNamespace>PokeForge.SDK</RootNamespace>
+
+    <!-- Package metadata -->
+    <PackageId>PokeForge.SDK</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>PokeForge</Authors>
+    <Description>Official PokeForge API SDK for .NET</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/pokeforge/pokeforge-sdk</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/pokeforge/pokeforge-sdk.git</RepositoryUrl>
+    <PackageTags>pokeforge;pokemon;tcg;trading-cards;api;sdk</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+</Project>
