@@ -41,16 +41,28 @@ jobs:
       - name: Test TypeScript SDK
         run: pnpm --filter @pokeforge/sdk test
 
-      # TODO: Python SDK (enable when #7 is implemented)
-      # - name: Setup Python
-      #   uses: actions/setup-python@v5
-      #   with:
-      #     python-version: '3.12'
-      #
-      # - name: Generate Python SDK
-      #   run: |
-      #     pip install openapi-python-client
-      #     # Add generation command here
+      # Python SDK
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        working-directory: packages/python
+        run: |
+          pip install -e ".[dev]"
+
+      - name: Lint Python SDK
+        working-directory: packages/python
+        run: ruff check .
+
+      - name: Type check Python SDK
+        working-directory: packages/python
+        run: mypy pokeforge_sdk
+
+      - name: Test Python SDK
+        working-directory: packages/python
+        run: pytest
 
       # C# SDK
       - name: Setup .NET
@@ -94,6 +106,9 @@ jobs:
             - [x] TypeScript SDK builds successfully
             - [x] TypeScript SDK passes type checking
             - [x] TypeScript SDK tests pass
+            - [x] Python SDK passes linting
+            - [x] Python SDK passes type checking
+            - [x] Python SDK tests pass
             - [x] C# SDK builds successfully
             - [x] C# SDK tests pass
           branch: chore/regenerate-sdks
