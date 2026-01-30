@@ -9,7 +9,7 @@
     "/health": {
       "get": {
         "tags": [
-          "Api, Version=0.1.163.0, Culture=neutral, PublicKeyToken=null"
+          "Api, Version=0.1.164.0, Culture=neutral, PublicKeyToken=null"
         ],
         "operationId": "HTTP:GET/health",
         "responses": {
@@ -8986,6 +8986,26 @@
           "isFollowing": {
             "type": "boolean",
             "nullable": true
+          },
+          "profileImageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "profileImagePreset": {
+            "type": "string",
+            "nullable": true
+          },
+          "headerImageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "headerImagePreset": {
+            "type": "string",
+            "nullable": true
+          },
+          "bio": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false,
@@ -9894,7 +9914,7 @@
       "name": "AdminVariantTypes"
     },
     {
-      "name": "Api, Version=0.1.163.0, Culture=neutral, PublicKeyToken=null"
+      "name": "Api, Version=0.1.164.0, Culture=neutral, PublicKeyToken=null"
     },
     {
       "name": "Artists"
