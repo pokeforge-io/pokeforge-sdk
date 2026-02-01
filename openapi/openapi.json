@@ -9,7 +9,7 @@
     "/health": {
       "get": {
         "tags": [
-          "Api, Version=0.1.167.0, Culture=neutral, PublicKeyToken=null"
+          "Api, Version=0.1.168.0, Culture=neutral, PublicKeyToken=null"
         ],
         "operationId": "HTTP:GET/health",
         "responses": {
@@ -386,6 +386,71 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardSingleResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardSingleResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CardSingleResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/Cards/slug/{slug}": {
+      "get": {
+        "tags": [
+          "Cards"
+        ],
+        "summary": "Get a single card by SEO-friendly slug.",
+        "operationId": "CardsGetBySlug",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The card slug (e.g., \"pokemon-sv1-scarlet-and-violet-charizard-ex-006\")",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -6677,121 +6742,6 @@
           }
         }
       }
-    },
-    "/sitemap-index.xml": {
-      "get": {
-        "tags": [
-          "Sitemap"
-        ],
-        "summary": "Get the sitemap index listing all sub-sitemaps.",
-        "operationId": "SitemapGetSitemapIndex",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sitemap-static.xml": {
-      "get": {
-        "tags": [
-          "Sitemap"
-        ],
-        "summary": "Get the static pages sitemap.",
-        "operationId": "SitemapGetStaticSitemap",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sitemap-cards-{page}.xml": {
-      "get": {
-        "tags": [
-          "Sitemap"
-        ],
-        "summary": "Get a paginated cards sitemap.",
-        "operationId": "SitemapGetCardsSitemap",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/sitemap-sets.xml": {
-      "get": {
-        "tags": [
-          "Sitemap"
-        ],
-        "summary": "Get the sets sitemap.",
-        "operationId": "SitemapGetSetsSitemap",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sitemap-blog.xml": {
-      "get": {
-        "tags": [
-          "Sitemap"
-        ],
-        "summary": "Get the blog posts sitemap.",
-        "operationId": "SitemapGetBlogSitemap",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sitemap-profiles.xml": {
-      "get": {
-        "tags": [
-          "Sitemap"
-        ],
-        "summary": "Get the public profiles sitemap.",
-        "operationId": "SitemapGetProfilesSitemap",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
     }
   },
   "components": {
@@ -7229,6 +7179,10 @@
             "type": "string",
             "nullable": true
           },
+          "slug": {
+            "type": "string",
+            "nullable": true
+          },
           "set": {
             "$ref": "#/components/schemas/CardSetInfo"
           },
@@ -7387,6 +7341,10 @@
             "format": "uuid"
           },
           "setName": {
+            "type": "string",
+            "nullable": true
+          },
+          "slug": {
             "type": "string",
             "nullable": true
           },
@@ -10029,7 +9987,7 @@
       "name": "AdminVariantTypes"
     },
     {
-      "name": "Api, Version=0.1.167.0, Culture=neutral, PublicKeyToken=null"
+      "name": "Api, Version=0.1.168.0, Culture=neutral, PublicKeyToken=null"
     },
     {
       "name": "Artists"
