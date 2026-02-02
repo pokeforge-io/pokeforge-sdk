@@ -9,7 +9,7 @@
     "/health": {
       "get": {
         "tags": [
-          "Api, Version=0.1.174.0, Culture=neutral, PublicKeyToken=null"
+          "Api, Version=0.1.179.0, Culture=neutral, PublicKeyToken=null"
         ],
         "operationId": "HTTP:GET/health",
         "responses": {
@@ -6682,7 +6682,7 @@
         "tags": [
           "Sets"
         ],
-        "summary": "Get a single card set by series slug and set slug.\nEnables SEO-friendly URLs like /sets/scarlet-violet/151",
+        "summary": "Get a single card set by series slug and set slug.\nEnables SEO-friendly URLs like /sets/scarlet-violet/sv1-scarlet-and-violet\nAlso supports legacy slugs (just the set ID) with automatic redirect.",
         "operationId": "SetsGetByHierarchicalSlug",
         "parameters": [
           {
@@ -6697,7 +6697,7 @@
           {
             "name": "setSlug",
             "in": "path",
-            "description": "The set URL slug (e.g., \"151\")",
+            "description": "The set URL slug (e.g., \"sv1-scarlet-and-violet\" or legacy \"sv1\")",
             "required": true,
             "schema": {
               "type": "string"
@@ -6732,6 +6732,9 @@
                 }
               }
             }
+          },
+          "301": {
+            "description": "Moved Permanently"
           },
           "404": {
             "description": "Not Found",
@@ -10073,7 +10076,7 @@
       "name": "AdminVariantTypes"
     },
     {
-      "name": "Api, Version=0.1.174.0, Culture=neutral, PublicKeyToken=null"
+      "name": "Api, Version=0.1.179.0, Culture=neutral, PublicKeyToken=null"
     },
     {
       "name": "Artists"
