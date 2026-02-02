@@ -9,7 +9,7 @@
     "/health": {
       "get": {
         "tags": [
-          "Api, Version=0.1.168.0, Culture=neutral, PublicKeyToken=null"
+          "Api, Version=0.1.174.0, Culture=neutral, PublicKeyToken=null"
         ],
         "operationId": "HTTP:GET/health",
         "responses": {
@@ -6677,6 +6677,88 @@
         }
       }
     },
+    "/Sets/{seriesSlug}/{setSlug}": {
+      "get": {
+        "tags": [
+          "Sets"
+        ],
+        "summary": "Get a single card set by series slug and set slug.\nEnables SEO-friendly URLs like /sets/scarlet-violet/151",
+        "operationId": "SetsGetByHierarchicalSlug",
+        "parameters": [
+          {
+            "name": "seriesSlug",
+            "in": "path",
+            "description": "The series URL slug (e.g., \"scarlet-violet\")",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "setSlug",
+            "in": "path",
+            "description": "The set URL slug (e.g., \"151\")",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "description": "Optional locale filter (default: US)",
+            "schema": {
+              "$ref": "#/components/schemas/CardLocale"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetSingleResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetSingleResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetSingleResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/Sets/{id}/master-checklist": {
       "get": {
         "tags": [
@@ -9460,6 +9542,10 @@
             "type": "string",
             "nullable": true
           },
+          "seriesSlug": {
+            "type": "string",
+            "nullable": true
+          },
           "setType": {
             "type": "string",
             "nullable": true
@@ -9987,7 +10073,7 @@
       "name": "AdminVariantTypes"
     },
     {
-      "name": "Api, Version=0.1.168.0, Culture=neutral, PublicKeyToken=null"
+      "name": "Api, Version=0.1.174.0, Culture=neutral, PublicKeyToken=null"
     },
     {
       "name": "Artists"
