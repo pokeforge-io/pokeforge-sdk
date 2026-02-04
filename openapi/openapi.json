@@ -9,7 +9,7 @@
     "/health": {
       "get": {
         "tags": [
-          "Api, Version=0.1.174.0, Culture=neutral, PublicKeyToken=null"
+          "Api, Version=0.1.180.0, Culture=neutral, PublicKeyToken=null"
         ],
         "operationId": "HTTP:GET/health",
         "responses": {
@@ -3897,9 +3897,6 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -4041,9 +4038,6 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -4144,72 +4138,6 @@
                 }
               }
             }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/api/users/{userId}/feed": {
-      "get": {
-        "tags": [
-          "Posts"
-        ],
-        "summary": "Get a user's profile feed (public endpoint).",
-        "operationId": "PostsGetUserFeed",
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
-            }
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 20
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserFeedResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserFeedResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserFeedResponse"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -6682,7 +6610,7 @@
         "tags": [
           "Sets"
         ],
-        "summary": "Get a single card set by series slug and set slug.\nEnables SEO-friendly URLs like /sets/scarlet-violet/151",
+        "summary": "Get a single card set by series slug and set slug.\nEnables SEO-friendly URLs like /sets/scarlet-violet/sv1-scarlet-and-violet\nAlso supports legacy slugs (just the set ID) with automatic redirect.",
         "operationId": "SetsGetByHierarchicalSlug",
         "parameters": [
           {
@@ -6697,7 +6625,7 @@
           {
             "name": "setSlug",
             "in": "path",
-            "description": "The set URL slug (e.g., \"151\")",
+            "description": "The set URL slug (e.g., \"sv1-scarlet-and-violet\" or legacy \"sv1\")",
             "required": true,
             "schema": {
               "type": "string"
@@ -6732,6 +6660,9 @@
                 }
               }
             }
+          },
+          "301": {
+            "description": "Moved Permanently"
           },
           "404": {
             "description": "Not Found",
@@ -6821,6 +6752,69 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/users/{userId}/feed": {
+      "get": {
+        "tags": [
+          "UserFeed"
+        ],
+        "summary": "Get a user's profile feed (public endpoint).",
+        "operationId": "UserFeedGetUserFeed",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "The user whose feed to retrieve.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number (1-based, default 1).",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Items per page (default 20).",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserFeedResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserFeedResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserFeedResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -10073,7 +10067,7 @@
       "name": "AdminVariantTypes"
     },
     {
-      "name": "Api, Version=0.1.174.0, Culture=neutral, PublicKeyToken=null"
+      "name": "Api, Version=0.1.180.0, Culture=neutral, PublicKeyToken=null"
     },
     {
       "name": "Artists"
@@ -10134,6 +10128,9 @@
     },
     {
       "name": "Sitemap"
+    },
+    {
+      "name": "UserFeed"
     },
     {
       "name": "UserProfile"
