@@ -9,7 +9,7 @@
     "/health": {
       "get": {
         "tags": [
-          "Api, Version=0.1.185.0, Culture=neutral, PublicKeyToken=null"
+          "Api, Version=0.1.189.0, Culture=neutral, PublicKeyToken=null"
         ],
         "operationId": "HTTP:GET/health",
         "responses": {
@@ -4548,9 +4548,6 @@
                 }
               }
             }
-          },
-          "503": {
-            "description": "Service Unavailable"
           }
         }
       },
@@ -4620,9 +4617,6 @@
                 }
               }
             }
-          },
-          "503": {
-            "description": "Service Unavailable"
           }
         }
       }
@@ -4733,9 +4727,6 @@
                 }
               }
             }
-          },
-          "503": {
-            "description": "Service Unavailable"
           }
         }
       }
@@ -7876,7 +7867,7 @@
             "type": "string",
             "nullable": true
           },
-          "dateAdded": {
+          "createdAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -7945,7 +7936,7 @@
           "condition": {
             "$ref": "#/components/schemas/CardCondition"
           },
-          "dateAdded": {
+          "createdAt": {
             "type": "string",
             "format": "date-time"
           }
@@ -8392,7 +8383,7 @@
             "type": "string",
             "nullable": true
           },
-          "dateAdded": {
+          "createdAt": {
             "type": "string",
             "format": "date-time"
           }
@@ -10067,7 +10058,7 @@
       "name": "AdminVariantTypes"
     },
     {
-      "name": "Api, Version=0.1.185.0, Culture=neutral, PublicKeyToken=null"
+      "name": "Api, Version=0.1.189.0, Culture=neutral, PublicKeyToken=null"
     },
     {
       "name": "Artists"
