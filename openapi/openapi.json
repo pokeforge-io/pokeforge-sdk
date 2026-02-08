@@ -9,7 +9,7 @@
     "/health": {
       "get": {
         "tags": [
-          "Api, Version=0.1.185.0, Culture=neutral, PublicKeyToken=null"
+          "Api, Version=0.1.191.0, Culture=neutral, PublicKeyToken=null"
         ],
         "operationId": "HTTP:GET/health",
         "responses": {
@@ -839,8 +839,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1554,8 +1554,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1963,8 +1963,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -3259,7 +3259,24 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FavoriteRemoveResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FavoriteRemoveResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FavoriteRemoveResponse"
+                }
+              }
+            }
           },
           "401": {
             "description": "Unauthorized",
@@ -3838,8 +3855,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
@@ -4548,9 +4565,6 @@
                 }
               }
             }
-          },
-          "503": {
-            "description": "Service Unavailable"
           }
         }
       },
@@ -4620,9 +4634,6 @@
                 }
               }
             }
-          },
-          "503": {
-            "description": "Service Unavailable"
           }
         }
       }
@@ -4733,9 +4744,6 @@
                 }
               }
             }
-          },
-          "503": {
-            "description": "Service Unavailable"
           }
         }
       }
@@ -6942,7 +6950,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for artist list endpoint."
+        "description": "Generic paginated list response wrapper."
       },
       "ArtistPreviewCard": {
         "type": "object",
@@ -7009,7 +7017,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for blog list endpoint."
+        "description": "Generic paginated list response wrapper."
       },
       "BlogPost": {
         "type": "object",
@@ -7113,7 +7121,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for single blog post endpoint."
+        "description": "Generic single-item response wrapper."
       },
       "BulkAddItemsRequest": {
         "type": "object",
@@ -7140,7 +7148,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for bulk add items endpoint."
+        "description": "Generic single-item response wrapper."
       },
       "BulkAddItemsResult": {
         "type": "object",
@@ -7190,7 +7198,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for bulk delete items endpoint."
+        "description": "Generic single-item response wrapper."
       },
       "BulkDeleteItemsResult": {
         "type": "object",
@@ -7395,7 +7403,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for card filters endpoint."
+        "description": "Generic single-item response wrapper."
       },
       "CardList": {
         "type": "object",
@@ -7496,7 +7504,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for card list endpoint."
+        "description": "Generic paginated list response wrapper."
       },
       "CardLocale": {
         "enum": [
@@ -7571,7 +7579,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for single card endpoint."
+        "description": "Generic single-item response wrapper."
       },
       "CardSortField": {
         "enum": [
@@ -7818,7 +7826,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for single collection endpoint."
+        "description": "Generic single-item response wrapper."
       },
       "CollectionItem": {
         "type": "object",
@@ -7876,7 +7884,7 @@
             "type": "string",
             "nullable": true
           },
-          "dateAdded": {
+          "createdAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -7945,7 +7953,7 @@
           "condition": {
             "$ref": "#/components/schemas/CardCondition"
           },
-          "dateAdded": {
+          "createdAt": {
             "type": "string",
             "format": "date-time"
           }
@@ -7971,7 +7979,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for collection items list endpoint."
+        "description": "Generic paginated list response wrapper."
       },
       "CollectionList": {
         "type": "object",
@@ -8028,7 +8036,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for collection list endpoint."
+        "description": "Generic single-item response wrapper."
       },
       "CollectionType": {
         "enum": [
@@ -8392,13 +8400,27 @@
             "type": "string",
             "nullable": true
           },
-          "dateAdded": {
+          "createdAt": {
             "type": "string",
             "format": "date-time"
           }
         },
         "additionalProperties": false,
         "description": "Simplified DTO for a favorited card."
+      },
+      "FavoriteRemoveResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Response for remove favorite endpoint."
       },
       "FavoritesCheckResponse": {
         "type": "object",
@@ -8435,7 +8457,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response for paginated favorites list."
+        "description": "Generic paginated list response wrapper."
       },
       "FlagListResponse": {
         "type": "object",
@@ -8472,7 +8494,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response for paginated list of followers or following."
+        "description": "Generic paginated list response wrapper."
       },
       "FollowResponse": {
         "type": "object",
@@ -8554,7 +8576,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for the master checklist endpoint."
+        "description": "Generic single-item response wrapper."
       },
       "MediaType": {
         "enum": [
@@ -8801,7 +8823,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response for get reaction counts endpoint."
+        "description": "Generic single-item response wrapper."
       },
       "PostReactionRemoveResponse": {
         "type": "object",
@@ -9049,7 +9071,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for single public collection detail endpoint."
+        "description": "Generic single-item response wrapper."
       },
       "PublicCollectionList": {
         "type": "object",
@@ -9103,7 +9125,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for public collections endpoint."
+        "description": "Generic paginated list response wrapper."
       },
       "PublicProfile": {
         "type": "object",
@@ -9393,7 +9415,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for series list endpoint."
+        "description": "Generic paginated list response wrapper."
       },
       "SeriesSingleResponse": {
         "type": "object",
@@ -9406,7 +9428,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for single series endpoint."
+        "description": "Generic single-item response wrapper."
       },
       "SeriesType": {
         "enum": [
@@ -9432,7 +9454,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response containing per-set collection counts for the authenticated user.\nReturns a dictionary mapping SetId to unique card count."
+        "description": "Generic single-item response wrapper."
       },
       "SetDetail": {
         "type": "object",
@@ -9587,7 +9609,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for set list endpoint."
+        "description": "Generic paginated list response wrapper."
       },
       "SetProfilePresetRequest": {
         "type": "object",
@@ -9630,7 +9652,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for single set endpoint."
+        "description": "Generic single-item response wrapper."
       },
       "SetType": {
         "enum": [
@@ -9677,7 +9699,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response containing per-variant collection counts for a specific set."
+        "description": "Generic single-item response wrapper."
       },
       "SortOrder": {
         "enum": [
@@ -9764,7 +9786,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response for threaded comments endpoint."
+        "description": "Generic paginated list response wrapper."
       },
       "UpdateBioRequest": {
         "type": "object",
@@ -9892,7 +9914,7 @@
           }
         },
         "additionalProperties": false,
-        "description": "Response wrapper for user feed endpoint."
+        "description": "Generic paginated list response wrapper."
       },
       "UserPresetMode": {
         "enum": [
@@ -10067,7 +10089,7 @@
       "name": "AdminVariantTypes"
     },
     {
-      "name": "Api, Version=0.1.185.0, Culture=neutral, PublicKeyToken=null"
+      "name": "Api, Version=0.1.191.0, Culture=neutral, PublicKeyToken=null"
     },
     {
       "name": "Artists"
