@@ -9,7 +9,7 @@
     "/health": {
       "get": {
         "tags": [
-          "Api, Version=0.1.191.0, Culture=neutral, PublicKeyToken=null"
+          "Api, Version=0.1.193.0, Culture=neutral, PublicKeyToken=null"
         ],
         "operationId": "HTTP:GET/health",
         "responses": {
@@ -1154,17 +1154,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/CollectionDeleteResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CollectionDeleteResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CollectionDeleteResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               }
             }
@@ -1844,17 +1844,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/CollectionItemDeleteResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CollectionItemDeleteResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CollectionItemDeleteResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               }
             }
@@ -2846,17 +2846,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentDeleteResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentDeleteResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CommentDeleteResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               }
             }
@@ -3098,17 +3098,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContactSubmitResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContactSubmitResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ContactSubmitResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               }
             }
@@ -3263,17 +3263,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FavoriteRemoveResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FavoriteRemoveResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FavoriteRemoveResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               }
             }
@@ -3630,17 +3630,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostReactionRemoveResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostReactionRemoveResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostReactionRemoveResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               }
             }
@@ -4081,17 +4081,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostDeleteResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostDeleteResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PostDeleteResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               }
             }
@@ -5058,17 +5058,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FollowResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FollowResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FollowResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               }
             }
@@ -5160,17 +5160,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FollowResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FollowResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FollowResponse"
+                  "$ref": "#/components/schemas/ApiMessageResponse"
                 }
               }
             }
@@ -6906,6 +6906,20 @@
         "additionalProperties": false,
         "description": "Request to add a card to a collection."
       },
+      "ApiMessageResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Response wrapper for operations that return only a success flag and message."
+      },
       "ArtistList": {
         "type": "object",
         "properties": {
@@ -7741,20 +7755,6 @@
         "additionalProperties": false,
         "description": "Response wrapper for create collection endpoint."
       },
-      "CollectionDeleteResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "description": "Response wrapper for delete collection endpoint."
-      },
       "CollectionDetail": {
         "type": "object",
         "properties": {
@@ -7895,20 +7895,6 @@
         },
         "additionalProperties": false,
         "description": "Full DTO for a collection item with card info."
-      },
-      "CollectionItemDeleteResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "description": "Response wrapper for collection item delete endpoint."
       },
       "CollectionItemResponse": {
         "type": "object",
@@ -8113,20 +8099,6 @@
         "additionalProperties": false,
         "description": "Response for create comment endpoint."
       },
-      "CommentDeleteResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "description": "Response for delete comment endpoint."
-      },
       "CommentDto": {
         "type": "object",
         "properties": {
@@ -8230,20 +8202,6 @@
         },
         "additionalProperties": false,
         "description": "Data transfer object for contact form submissions"
-      },
-      "ContactSubmitResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "description": "Response for contact form submission."
       },
       "ContentType": {
         "enum": [
@@ -8408,20 +8366,6 @@
         "additionalProperties": false,
         "description": "Simplified DTO for a favorited card."
       },
-      "FavoriteRemoveResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "description": "Response for remove favorite endpoint."
-      },
       "FavoritesCheckResponse": {
         "type": "object",
         "properties": {
@@ -8495,20 +8439,6 @@
         },
         "additionalProperties": false,
         "description": "Generic paginated list response wrapper."
-      },
-      "FollowResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "description": "Response for follow/unfollow actions."
       },
       "GenerateDisplayNameResponse": {
         "type": "object",
@@ -8632,20 +8562,6 @@
         },
         "additionalProperties": false,
         "description": "Response wrapper for create post endpoint."
-      },
-      "PostDeleteResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "description": "Response wrapper for delete post endpoint."
       },
       "PostDto": {
         "type": "object",
@@ -8824,20 +8740,6 @@
         },
         "additionalProperties": false,
         "description": "Generic single-item response wrapper."
-      },
-      "PostReactionRemoveResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "description": "Response for remove reaction endpoint."
       },
       "PostReactionResult": {
         "type": "object",
@@ -10089,7 +9991,7 @@
       "name": "AdminVariantTypes"
     },
     {
-      "name": "Api, Version=0.1.191.0, Culture=neutral, PublicKeyToken=null"
+      "name": "Api, Version=0.1.193.0, Culture=neutral, PublicKeyToken=null"
     },
     {
       "name": "Artists"
