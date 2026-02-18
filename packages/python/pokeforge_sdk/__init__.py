@@ -19,7 +19,7 @@ from pokeforge_sdk.client.errors import (
 )
 from pokeforge_sdk.client.pagination import Page, PageInfo
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
     # Client
