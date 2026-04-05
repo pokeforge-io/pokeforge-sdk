@@ -9,7 +9,7 @@
     "/health": {
       "get": {
         "tags": [
-          "Api, Version=0.1.195.0, Culture=neutral, PublicKeyToken=null"
+          "Api, Version=0.1.198.0, Culture=neutral, PublicKeyToken=null"
         ],
         "operationId": "HTTP:GET/health",
         "responses": {
@@ -9985,13 +9985,16 @@
       "name": "AdminSets"
     },
     {
+      "name": "AdminTcgPlayerSnapshots"
+    },
+    {
       "name": "AdminUsers"
     },
     {
       "name": "AdminVariantTypes"
     },
     {
-      "name": "Api, Version=0.1.195.0, Culture=neutral, PublicKeyToken=null"
+      "name": "Api, Version=0.1.198.0, Culture=neutral, PublicKeyToken=null"
     },
     {
       "name": "Artists"
@@ -10025,6 +10028,9 @@
     },
     {
       "name": "InternalPosts"
+    },
+    {
+      "name": "InternalPricing"
     },
     {
       "name": "InternalSets"
