@@ -61,7 +61,7 @@
     "msw": "^2.12.9",
     "openapi-typescript": "^7.4.4",
     "tsup": "^8.3.5",
-    "typescript": "^5.7.3",
+    "typescript": "^6.0.3",
     "vitest": "^4.0.18"
   }
 }
