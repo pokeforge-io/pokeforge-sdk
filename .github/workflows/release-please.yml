@@ -21,7 +21,7 @@ jobs:
       csharp_release_created: ${{ steps.release.outputs['packages/csharp--release_created'] }}
       csharp_tag_name: ${{ steps.release.outputs['packages/csharp--tag_name'] }}
     steps:
-      - uses: googleapis/release-please-action@v4
+      - uses: googleapis/release-please-action@v5
         id: release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
